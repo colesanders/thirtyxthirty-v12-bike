@@ -1,0 +1,10 @@
+<div class="bike-containers">
+    <div class="bike-list">
+        <thirty-bike-list [bikes]="bikes$ | async" (selected)="select($event)" (deleted)="delete($event)">
+        </thirty-bike-list>
+    </div>
+    <div class="bike-detail">
+        <thirty-bike-detail [bike]="bike$ | async" (saved)="save($event)" (cancelled)="cancel()"> 
+        </thirty-bike-detail>
+    </div>
+</div>

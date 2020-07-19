@@ -1,0 +1,36 @@
+<mat-card class="mat-card-light"> 
+    <mat-card-header style="display: flex; justify-content: space-between;">
+      <mat-card-title class="accent">
+        <span *ngIf="bikeForm.value.id !== null; else elseBlock">
+          Editing Bike
+        </span>
+        <ng-template #elseBlock>
+          Create Bike
+        </ng-template>
+      </mat-card-title>
+      
+    </mat-card-header>
+  <form [formGroup]="bikeForm" (ngSubmit)="saved.emit(bikeForm.value)">
+    <mat-card-content >
+
+      <mat-form-field class="full-width" >
+        <input  matInput placeholder="Title" type="string"
+        formControlName="brand">
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="full-width" >
+        <input  matInput placeholder="Title" type="number"
+        formControlName="displacement">
+      </mat-form-field>
+      <br>
+
+    </mat-card-content>
+    <mat-card-actions style="display: flex; justify-content: space-between;">
+      <button [disabled]="bikeForm.invalid" type="submit" mat-button color="primary">Save</button>
+      <button type="button" mat-button (click)="cancelled.emit();bikeForm.reset();">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>
