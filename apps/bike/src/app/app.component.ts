@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   appInfo = {
-    title: "Bikes App",
-    description: "Round 3...Fight!"
+    title: "Bike App",
+    description: "30x30-V12"
   };
 
   links = [

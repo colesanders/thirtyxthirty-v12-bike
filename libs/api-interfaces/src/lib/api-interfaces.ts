@@ -6,9 +6,7 @@ export interface Bike {
   "id": string,
   "brand": string,
   "year": number,
-  "displacement": number,
   "style": string,
-  "stroke": number,
   "extras": string[]
 }
 

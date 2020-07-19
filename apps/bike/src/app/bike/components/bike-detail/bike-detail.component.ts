@@ -16,6 +16,13 @@ export class BikeDetailComponent implements OnInit, OnChanges{
 
   bikeForm: FormGroup;
 
+  brands = [ 'KTM', "Honda"]
+
+  styles = {
+    ktm: ['450 SX-F', '250 SX-F', '350 SX-F', '250 SX', '150 SX'],
+    honda: ['CRF 450R', 'CRF 450X', 'CRF 250R', "CRF 250X", 'CR 250R']
+  };
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -26,7 +33,6 @@ export class BikeDetailComponent implements OnInit, OnChanges{
     if(this.bikeForm && this.bike){
       this.bikeForm.patchValue(this.bike)
     }
-    
   }
 
   createFormGroup(){
@@ -35,14 +41,13 @@ export class BikeDetailComponent implements OnInit, OnChanges{
 
       brand: new FormControl('', [
         Validators.required,
-        Validators.minLength(2),
-      ]),
-      displacement: new FormControl(250, [
       ]),
       style: new FormControl('', [
+        Validators.required,
       ]),
-      stroke: new FormControl(4, [
-      ])
+      year: new FormControl('', [
+        Validators.required,
+      ]),
     })
   }
 }

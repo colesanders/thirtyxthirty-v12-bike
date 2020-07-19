@@ -13,17 +13,44 @@
   <form [formGroup]="bikeForm" (ngSubmit)="saved.emit(bikeForm.value)">
     <mat-card-content >
 
-      <mat-form-field class="full-width" >
-        <input  matInput placeholder="Title" type="string"
-        formControlName="brand">
+      <mat-form-field appearance="fill" >
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option *ngFor="let option of brands" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
+
+      <span *ngIf="bikeForm.value.brand !== '' && bikeForm.value.brand !== null">
+        <span *ngIf="bikeForm.value.brand === 'KTM'; else elseblock">
+          <mat-form-field appearance="fill">
+            <mat-label>Style</mat-label>
+            <mat-select formControlName="style">
+              <mat-option *ngFor="let option of styles.ktm" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </span>
+
+        <ng-template #elseblock>
+          <mat-form-field appearance="fill">
+            <mat-label>Style</mat-label>
+            <mat-select formControlName="style">
+              <mat-option *ngFor="let option of styles.honda" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-template>
+      </span>
       <br>
 
-      <mat-form-field class="full-width" >
-        <input  matInput placeholder="Title" type="number"
-        formControlName="displacement">
+      <mat-form-field>
+        <mat-label>Year</mat-label>
+        <input matInput formControlName="year" type="number">
       </mat-form-field>
-      <br>
 
     </mat-card-content>
     <mat-card-actions style="display: flex; justify-content: space-between;">
